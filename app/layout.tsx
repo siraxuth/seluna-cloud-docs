@@ -2,6 +2,7 @@ import { IBM_Plex_Sans_Thai } from "next/font/google";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import { Metadata } from "next";
 import type { ReactNode } from "react";
+import CustomSearchDialog from "@/components/ui/search-dialog";
 import "./global.css";
 
 const ibmPlexSansThai = IBM_Plex_Sans_Thai({
@@ -27,7 +28,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning style={{ fontFamily: 'var(--font-ibm-plex-sans-thai), sans-serif' }}>
       <body className={`${ibmPlexSansThai.variable} flex flex-col min-h-screen`}>
-        <RootProvider theme={{ defaultTheme: "dark" }}>{children}</RootProvider>
+        <RootProvider theme={{ defaultTheme: "dark" }} search={{ SearchDialog: CustomSearchDialog }}>{children}</RootProvider>
       </body>
     </html>
   );

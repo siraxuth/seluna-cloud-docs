@@ -16,6 +16,16 @@ export const blog = defineCollections({
   }),
 });
 
+export const changelog = defineCollections({
+  dir: 'content/changelog',
+  type: 'doc',
+  schema: frontmatterSchema.extend({
+    date: z.date(),
+    version: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
 export default defineConfig({
   mdxOptions: {
     rehypeCodeOptions: {

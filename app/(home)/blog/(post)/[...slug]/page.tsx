@@ -23,10 +23,7 @@ export default async function Page(props: {
     const { body: Mdx, toc } = page.data
 
     return (
-        <DocsPage
-            toc={toc}
-            full={page.data.full}
-        >
+        <DocsPage toc={toc} full={page.data.full}>
             <Link
                 href="/blog"
                 className="flex items-center gap-1 text-muted-foreground hover:text-foreground w-fit"

@@ -28,7 +28,7 @@ export function GridLayout({
     return (
         <div
             className={cn(
-                "relative grid w-full gap-0",
+                "relative grid w-full gap-0 mx-auto",
                 gridLines && "border-grid-line border",
                 columns === 16 && "grid-cols-grid-16",
                 columns === 12 && "grid-cols-grid-12",

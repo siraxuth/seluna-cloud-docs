@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 import { NavMenu } from "./nav-menu";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Moon, Sun, Menu } from "lucide-react";
+import { Moon, Sun, Menu, Search } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useSearchContext } from "fumadocs-ui/contexts/search";
+
 import {
   Sheet,
   SheetContent,
@@ -16,29 +17,45 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cn } from '@/lib/utils';
 
 const SCROLL_THRESHOLD = 50;
 
+
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
-  if (!mounted) return <div className="w-9 h-9" />;
+  if (!mounted) return <div className="w-[52px] h-[28px]" />;
+
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={isDark}
       aria-label="Toggle theme"
-    >
-      {theme === "dark" ? (
-        <Sun className="!w-5 !h-5" />
-      ) : (
-        <Moon className="!w-5 !h-5" />
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className={cn(
+        "relative inline-flex h-7 w-[52px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        isDark ? "bg-muted" : "bg-muted"
       )}
-    </Button>
+    >
+      <span
+        className={cn(
+          "pointer-events-none flex h-6 w-6 items-center justify-center rounded-full bg-background shadow-sm ring-0 transition-transform duration-200",
+          isDark ? "translate-x-[24px]" : "translate-x-0"
+        )}
+      >
+        {isDark ? (
+          <Moon className="h-3.5 w-3.5" />
+        ) : (
+          <Sun className="h-3.5 w-3.5" />
+        )}
+      </span>
+    </button>
   );
 }
 
@@ -47,6 +64,7 @@ export default function Navbar() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const pathname = usePathname();
+  const { setOpenSearch } = useSearchContext();
   const isHomePage = pathname === "/";
 
   useEffect(() => {
@@ -81,7 +99,7 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "p-3 z-50 transition-all duration-1000 ease-out relative",
+        "p-3 z-40 transition-all duration-1000 ease-out relative",
         "left-1/2 -translate-x-1/2",
         isHomePage ? "fixed" : "relative",
         isHomePage && isScrolled
@@ -102,8 +120,8 @@ export default function Navbar() {
       <div className="h-full flex items-center justify-between mx-auto px-4 sm:px-6 relative">
         <div className="flex items-center gap-6">
           <Link href="/">
-            <div className="flex items-center">
-              <Image src={"/android-chrome-512x512.png"} alt="Logo" width={32} height={32} />
+            <div className="flex items-center gap-2">
+              <Image src={"/android-chrome-512x512.png"} alt="Logo" width={24} height={24} />
               <h1 className="text-2xl font-bold">Seluna</h1>
             </div>
           </Link>
@@ -113,6 +131,26 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-1">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setOpenSearch(true)}
+            aria-label="Search"
+            className="md:hidden"
+          >
+            <Search className="w-5! h-5!" />
+          </Button>
+          <button
+            onClick={() => setOpenSearch(true)}
+            className="hidden md:inline-flex items-center gap-2 h-9 w-64 rounded-lg border bg-background/50 px-3 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+          >
+            <Search className="h-4 w-4 shrink-0" />
+            <span className="flex-1 text-left">ค้นหา...</span>
+            <div className="flex items-center gap-0.5">
+              <kbd className="h-5 px-1.5 rounded border bg-background font-mono text-[10px] flex items-center">Ctrl</kbd>
+              <kbd className="h-5 px-1.5 rounded border bg-background font-mono text-[10px] flex items-center">K</kbd>
+            </div>
+          </button>
           <ThemeToggle />
 
           {/* Mobile hamburger */}
@@ -138,8 +176,12 @@ export default function Navbar() {
                   </Link>
                 </SheetTitle>
               </SheetHeader>
-              <div className="px-4 pt-4">
+              <div className="px-4 pt-4 space-y-4">
                 <NavMenu data-orientation="vertical" orientation="vertical" />
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <span>Appearance</span>
+                  <ThemeToggle />
+                </div>
               </div>
             </SheetContent>
           </Sheet>

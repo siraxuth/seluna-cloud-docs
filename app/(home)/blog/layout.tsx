@@ -1,34 +1,20 @@
-import { blogSource } from '@/lib/source';
-import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import type { Metadata } from 'next';
-import { baseOptions } from '../../layout.config';
+import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
     title: {
-        template: '%s | Seyfert Blog',
-        default: 'Seyfert Blog',
+        template: '%s | Blog',
+        default: 'Blog',
     },
-    description: 'Updates, release notes, and news about Seyfert',
-   openGraph: {
-    images: {
-        type: 'image/png',
-        url: './banner.png'
-    }
-   }
+    description: 'Updates, release notes, and news',
+    openGraph: {
+        images: {
+            type: 'image/png',
+            url: './banner.png',
+        },
+    },
 };
 
-export default function BlogLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
-    return <DocsLayout
-            tree={blogSource.pageTree}
-            {...baseOptions}
-            sidebar={{
-                className: 'hidden'
-            }}
-        >
-            {children}
-        </DocsLayout>;
-} 
+export default function BlogLayout({ children }: { children: ReactNode }) {
+    return <>{children}</>;
+}
