@@ -26,7 +26,7 @@ const AnimatedSection = ({
 export default function HomeSections() {
   return (
     <>
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <FeaturesSectionWithHoverEffects />
       </AnimatedSection>
 
@@ -40,7 +40,7 @@ export default function HomeSections() {
 
       <AnimatedSection delay={0.4}>
         <OpenSource repository={config.repository} />
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       <AnimatedSection delay={0.5}>
         <Footer />

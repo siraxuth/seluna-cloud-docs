@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import HomeSections from "./sections";
 export default function Home() {
     const { resolvedTheme } = useTheme();
     const [heroHeight, setHeroHeight] = useState(800);
@@ -46,7 +47,7 @@ export default function Home() {
                             loading="eager"
                             fetchPriority="high"
                         />
-                        {/* <div className="absolute inset-0 bg-gradient-to-t from-white via-white/85 via-[18%] to-transparent dark:from-[#030303] dark:via-[#030303]/82 dark:via-[20%] dark:to-transparent" /> */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 via-[60%] to-white dark:via-[#030303]/60 dark:to-[#030303]" />
                     </motion.div>
                 </div>
 
@@ -96,9 +97,9 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* <div className="mx-auto max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mt-8 relative space-y-16">
+            {/* <div className="mx-auto max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mt-8 relative space-y-16"> */}
                 <HomeSections />
-            </div> */}
+            {/* </div> */}
         </main>
     );
 }

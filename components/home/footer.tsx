@@ -12,32 +12,37 @@ export function Footer() {
                 bottomRight: true,
             }}
             lineVariant="none"
-            className="min-h-[250px] p-8"
+            className=" p-8 max-w-7xl mx-auto rounded-lg "
         >
             <div className="space-y-8">
                 <div>
-                    <h2 className="text-3xl font-medium tracking-tight">
-                        Ready to build your next Discord bot? {" "}
+                    <h2 className="text-xl font-medium tracking-tight">
+                        Made with 🌙 by{" "}
+                        <Link href="https://sirayuth.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                            sirayuth
+                        </Link>
                     </h2>
                     <p className="text-muted-foreground mt-4 text-xl">
-                        Start by installing{" "}
-                        <span className="text-blue-500">Seyfert</span>{" "}
-                        and get started in minutes.
+                        Copyright © 2022–2026{" "}
+                        <Link href="https://pranakorn.in.th" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium underline">
+                            Pranakorn
+                        </Link>
+                        . All rights reserved.
                     </p>
                 </div>
                 <div className="flex gap-4 flex-wrap">
                     <Link href="/guide" target="_blank" rel="noopener noreferrer">
                         <Button variant="default" size="lg" className="rounded-md shadow-none cursor-pointer">
-                            Read the guide
+                            คู่มือการใช้งาน
                             <ArrowUpRight className="!w-5 !h-5 ml-2" />
                         </Button>
                     </Link>
-                    <Link href="https://discord.gg/hEeJNaSqnS" target="_blank" rel="noopener noreferrer">
+                    {/* <Link href="https://sirayuth.com" target="_blank" rel="noopener noreferrer">
                         <Button variant="outline" size="lg" className="rounded-md shadow-none cursor-pointer">
-                            Join Discord
-                            <Discord className="!h-5 !w-5" />
+                            sirayuth.com
+                            <ArrowUpRight className="!w-5 !h-5" />
                         </Button>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </GridLayout>

@@ -1,26 +1,49 @@
-# seyfert-docs
+# Seluna Docs
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+Documentation site for Seluna, built with [Next.js](https://nextjs.org) + [Fumadocs](https://fumadocs.vercel.app). Deployed to Cloudflare Workers via [OpenNext](https://opennext.js.org/cloudflare).
 
-Run development server:
+## Stack
+
+- **Framework**: Next.js 16 + React 19
+- **Docs engine**: Fumadocs (UI + MDX)
+- **Styling**: Tailwind CSS v4
+- **Deploy**: Cloudflare Workers (`seluna-cloud-docs`)
+- **Runtime**: Bun
+
+## Getting Started
 
 ```bash
-npm run dev
-# or
-pnpm dev
-# or
-yarn dev
+bun install
+bun dev
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Scripts
 
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
+| Command | Action |
+|---------|--------|
+| `bun dev` | Start dev server |
+| `bun build` | Build for Node |
+| `bun run build:cf` | Build for Cloudflare |
+| `bun run deploy` | Build + deploy to Cloudflare |
+| `bun run preview` | Build + preview locally via Wrangler |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
+## Content
+
+Content lives in `content/` as MDX files, organized by section:
+
+- `content/guide/` — guides
+- `content/blog/` — blog posts
+
+Edit or add `.mdx` files there. Fumadocs picks them up automatically via `source.config.ts`.
+
+## Deploy
+
+Uses `@opennextjs/cloudflare`. Worker name: `seluna-cloud-docs`.
+
+```bash
+bun run deploy
+```
+
+Requires Wrangler authenticated (`wrangler login`).
