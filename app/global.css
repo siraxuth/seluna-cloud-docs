@@ -10,6 +10,10 @@
 
 
 
+* {
+  font-family: var(--font-ibm-plex-sans-thai), sans-serif !important;
+}
+
 :root {
 
   --background: hsl(0 0% 100%);
@@ -181,7 +185,6 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-ibm-plex-sans-thai), sans-serif;
   }
 }
 

@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${ibmPlexSansThai.variable} font-sans flex flex-col min-h-screen`}>
+    <html lang="en" suppressHydrationWarning style={{ fontFamily: 'var(--font-ibm-plex-sans-thai), sans-serif' }}>
+      <body className={`${ibmPlexSansThai.variable} flex flex-col min-h-screen`}>
         <RootProvider>{children}</RootProvider>
       </body>
     </html>

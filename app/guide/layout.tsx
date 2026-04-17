@@ -4,6 +4,7 @@ import { baseOptions } from "@/app/layout.config";
 import { guideSource } from "@/lib/source";
 import { config } from "@/app.config";
 
+
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <DocsLayout
