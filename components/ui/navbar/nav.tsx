@@ -127,7 +127,7 @@ export default function Navbar() {
                 <Menu className="!w-5 !h-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-64">
+            <SheetContent side="right" className="w-64">
               <SheetHeader>
                 <SheetTitle>
                   <Link href="/" onClick={() => setSheetOpen(false)}>
