@@ -20,7 +20,7 @@ export function Footer() {
                             </Link>
                         </h2>
                         <p className="text-muted-foreground text-xs sm:text-sm">
-                            Copyright © 2022–2026{" "}
+                            Copyright © 2026{" "}
                             <Link href="https://pranakorn.in.th" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium underline">
                                 Pranakorn
                             </Link>
