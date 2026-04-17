@@ -5,6 +5,9 @@ import { UsedBySection } from "@/components/home/usedby";
 import * as motion from "motion/react-client";
 import OpenSource from "@/components/home/github";
 import { config } from "@/app.config";
+import { UpdatesSection } from "@/components/home/updates";
+import { DocsGrid } from "@/components/home/docs-grid";
+import { CTASection } from "@/components/home/cta-section";
 
 const AnimatedSection = ({
   children,
@@ -41,6 +44,9 @@ export default function HomeSections() {
       <AnimatedSection delay={0.4}>
         <OpenSource repository={config.repository} />
       </AnimatedSection> */}
+          <UpdatesSection />
+      <DocsGrid />
+      <CTASection />
 
       <AnimatedSection delay={0.5}>
         <Footer />

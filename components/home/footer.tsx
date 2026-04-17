@@ -14,7 +14,7 @@ export function Footer() {
                 <div className="flex flex-col items-center justify-center gap-8 text-center max-w-2xl mx-auto">
                     
                     {/* Brand / Logo */}
-                    <div className="flex flex-col items-center gap-3">
+                    {/* <div className="flex flex-col items-center gap-3">
                         <img 
                             src="/android-chrome-192x192.png" 
                             alt="Seluna Logo" 
@@ -23,12 +23,16 @@ export function Footer() {
                         <h3 className="text-xl font-bold text-foreground">
                             Seluna
                         </h3>
-                    </div>
+                    </div> */}
 
                     {/* Credits */}
                     <div className="space-y-4">
                         <p className="text-sm sm:text-base text-muted-foreground font-medium flex items-center justify-center gap-1.5 flex-wrap">
-                            Crafted with passion by
+                            Crafted with    <img 
+                            src="/android-chrome-192x192.png" 
+                            alt="Seluna Logo" 
+                            className="h-5 w-5 object-contain rounded-2xl"
+                        /> by
                             <Link 
                                 href="https://sirayuth.com" 
                                 target="_blank" 

@@ -24,7 +24,9 @@ export default function Home() {
 
     // ใช้ global scrollY แทน target ref → ทำงานถูกต้องกับ fixed element ใน Chrome/Edge
     const { scrollY } = useScroll();
-    const backgroundOpacity = useTransform(scrollY, [0, heroHeight * 0.5, heroHeight], [0.08, 0.02, 0]);
+    const backgroundOpacityDark = useTransform(scrollY, [0, heroHeight * 0.5, heroHeight], [0.08, 0.02, 0]);
+    const backgroundOpacityLight = useTransform(scrollY, [0, heroHeight * 0.5, heroHeight], [0.55, 0.35, 0]);
+    const backgroundOpacity = resolvedTheme === "light" ? backgroundOpacityLight : backgroundOpacityDark;
     const backgroundScale = useTransform(scrollY, [0, heroHeight], [1, 1.08]);
 
     return (
@@ -38,9 +40,9 @@ export default function Home() {
                         style={{ opacity: backgroundOpacity }}
                     >
                         <motion.img
-                            src="/banner/pranakorn-doodle.png"
+                            src={resolvedTheme === "light" ? "/banner/pranakorn-doodle.svg" : "/banner/pranakorn-doodle.png"}
                             alt="background"
-                            className="h-full w-full object-cover grayscale"
+                            className="h-full w-full object-cover"
                             style={{
                                 scale: backgroundScale,
                             }}
