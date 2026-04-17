@@ -1,47 +1,135 @@
 ---
-title: "UX Improvements"
-description: "Major improvements to UI/UX"
-date: 2025-05-23
-tags: ["UI", "UX"]
-version: "0.9"
+title: "Seluna Storefront v1.0.0 — First Release"
+description: "เปิดตัว Seluna Storefront ครั้งแรก ระบบ e-commerce ครบวงจรรองรับ multi-tenant, reseller, และ payment หลายช่องทาง"
+date: 2026-04-17
+tags: ["Release", "E-Commerce", "Platform"]
+version: "1.0.0"
 ---
 
-![UX Improvements](https://images.unsplash.com/photo-1680016661694-1cd3faf31c3a?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+![Seluna Storefront v1.0.0](https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2940&auto=format&fit=crop)
 
-- **Redesigned interface** with cleaner, more intuitive navigation
-- **Enhanced accessibility** with improved keyboard navigation and screen reader support
-- **Streamlined workflows** for faster task completion
-- **Responsive design** optimized for all device sizes
+- **Multi-Tenant Storefront** รองรับ subdomain routing และ custom domain ต่อร้านได้เลย
+- **Payment หลายช่องทาง** PromptPay QR, Bank Transfer, TrueMoney, Beam, PaySo, และ Wallet
+- **Reseller System** ครบ — API keys, tier pricing, wallet, webhook
+- **Shipping Integration** เชื่อม iShip/Pranakorn รองรับ Kerry, Flash, J&T, ThaiPost, DHL และอีกหลายเจ้า
+- **LINE Bot** สั่งซื้อ ดูยอด เติมเงิน สแกนสลิป ผ่าน LINE ได้เลย
+- **Digital Products** ระบบส่ง account เกม/บริการดิจิทัลแบบ encrypted อัตโนมัติ
 
 <Accordion type="multiple" collapsible className="w-full not-prose">
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Features</AccordionTrigger>
+  <AccordionItem value="storefront">
+    <AccordionTrigger>Storefront & Shopping</AccordionTrigger>
     <AccordionContent className="flex flex-col gap-4 text-balance">
       <ul className="list-disc space-y-2 pl-4">
-        <li>
-          <strong>Redesigned navigation menu</strong> with improved organization
-          and visual hierarchy
-        </li>
-        <li>
-          Enhanced accessibility features with full keyboard navigation support
-        </li>
-        <li>High contrast mode for users with visual impairments</li>
-        <li>Optimized touch targets for better mobile interaction</li>
-        <li>Enhanced swipe gestures and mobile-specific navigation</li>
+        <li><strong>Multi-tenant architecture</strong> — subdomain routing (*.hmpr.store) + custom domain support พร้อม middleware caching 5 นาที</li>
+        <li><strong>Product catalog</strong> — สินค้า multi-variant, รูปภาพ gallery, หมวดหมู่, ค้นหาแบบ full-text พร้อม command palette</li>
+        <li><strong>Shopping cart & checkout</strong> — checkout flow หลายขั้นตอน รองรับทั้ง guest และ user พร้อม OTP verification</li>
+        <li><strong>Order tracking</strong> — ตาม order ได้ทั้ง registered user และ guest ผ่าน order ID</li>
+        <li><strong>Digital products</strong> — ส่ง account credentials แบบ encrypted อัตโนมัติหลังชำระเงิน</li>
+        <li><strong>Subscription products</strong> — จัดการ subscription lifecycle, auto-expiry, ต่ออายุ, แจ้งเตือน</li>
+        <li><strong>Coupon system</strong> — สร้างและใช้คูปองส่วนลดได้ที่ checkout</li>
+        <li><strong>Dynamic theming</strong> — ปรับสี brand, banner, logo ต่อร้านได้อิสระ</li>
       </ul>
     </AccordionContent>
   </AccordionItem>
-  <AccordionItem value="item-2">
-    <AccordionTrigger>Bug Fixes</AccordionTrigger>
+
+  <AccordionItem value="payment">
+    <AccordionTrigger>Payment & Wallet</AccordionTrigger>
     <AccordionContent className="flex flex-col gap-4 text-balance">
       <ul className="list-disc space-y-2 pl-4">
-        <li>
-          Fixed inconsistent button placement across different screen sizes
-        </li>
-        <li>Resolved color contrast issues affecting readability</li>
-        <li>Corrected tab order problems in form navigation</li>
-        <li>Fixed device orientation change handling on mobile devices</li>
-        <li>Improved ARIA label compatibility with screen readers</li>
+        <li><strong>PromptPay QR</strong> — สร้าง QR พร้อม expiry timer</li>
+        <li><strong>Bank Transfer</strong> — แนบสลิปพร้อมยืนยันผ่าน Slip2Go API</li>
+        <li><strong>Beam Checkout</strong> — QR PromptPay gateway</li>
+        <li><strong>PaySo</strong> — PromptPay processor พร้อม order inquiry</li>
+        <li><strong>TrueMoney</strong> — รองรับการชำระผ่าน TrueMoney</li>
+        <li><strong>Wallet system</strong> — เติมเงิน, ชำระสินค้า, ดูประวัติ, Coins accumulation</li>
+        <li><strong>Top-up system</strong> — เติมเงิน wallet ผ่าน Beam, TrueMoney, สลิปธนาคาร</li>
+      </ul>
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem value="shipping">
+    <AccordionTrigger>Shipping & Logistics</AccordionTrigger>
+    <AccordionContent className="flex flex-col gap-4 text-balance">
+      <ul className="list-disc space-y-2 pl-4">
+        <li><strong>iShip/Pranakorn integration</strong> — สร้าง shipping order, ดึง tracking number, อัปเดตสถานะอัตโนมัติ</li>
+        <li><strong>Multi-courier</strong> — Kerry, Flash Express, J&T, ไปรษณีย์ไทย (EMS), Ninja Van, Best Express, DHL, SCG</li>
+        <li><strong>Shipping zones</strong> — ตั้ง courier ต่อ zone ได้</li>
+        <li><strong>Label printing</strong> — พิมพ์ใบปะหน้าแบบ batch</li>
+        <li><strong>Pickup scheduling</strong> — นัดรับพัสดุ + ประวัติ pickup</li>
+        <li><strong>COD support</strong> — รองรับเก็บเงินปลายทาง</li>
+        <li><strong>Thai address data</strong> — ข้อมูลจังหวัด/อำเภอ/ตำบล ครบ</li>
+      </ul>
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem value="auth">
+    <AccordionTrigger>Authentication & User</AccordionTrigger>
+    <AccordionContent className="flex flex-col gap-4 text-balance">
+      <ul className="list-disc space-y-2 pl-4">
+        <li><strong>Email/password</strong> — สมัคร + ยืนยัน OTP, ลืมรหัส, reset password</li>
+        <li><strong>OTP login</strong> — เข้าสู่ระบบด้วย OTP ทาง SMS</li>
+        <li><strong>LINE Login</strong> — social login + เชื่อมบัญชี LINE กับ account ร้าน</li>
+        <li><strong>Address book</strong> — จัดการที่อยู่จัดส่งหลายที่อยู่</li>
+        <li><strong>Relay auth</strong> — ระบบ SSO ระหว่าง portal กับ storefront</li>
+      </ul>
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem value="reseller">
+    <AccordionTrigger>Reseller System</AccordionTrigger>
+    <AccordionContent className="flex flex-col gap-4 text-balance">
+      <ul className="list-disc space-y-2 pl-4">
+        <li><strong>Reseller accounts</strong> — สมัคร reseller แยกจาก customer ทั่วไป</li>
+        <li><strong>Tier pricing</strong> — ราคาต่าง tier: MAIN, RESELLER, VIP</li>
+        <li><strong>API keys</strong> — สร้าง/หมุนเวียน/ยกเลิก key แบบ bcrypt-hashed</li>
+        <li><strong>Reseller wallet</strong> — ยอดเงิน + ประวัติธุรกรรม</li>
+        <li><strong>Reseller webhooks</strong> — ส่ง event ไปยัง endpoint ของ reseller</li>
+        <li><strong>Reseller docs page</strong> — หน้าเอกสาร API สำหรับ reseller</li>
+      </ul>
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem value="comms">
+    <AccordionTrigger>Communication & Notifications</AccordionTrigger>
+    <AccordionContent className="flex flex-col gap-4 text-balance">
+      <ul className="list-disc space-y-2 pl-4">
+        <li><strong>LINE Bot</strong> — คำสั่ง ORDER, BALANCE, TOPUP, HELP, สแกนสลิป, สร้าง QR PromptPay</li>
+        <li><strong>Email</strong> — SMTP (Gmail compatible), template ต่อร้าน, log การส่ง — ครอบคลุมทุก event สำคัญ</li>
+        <li><strong>Discord webhooks</strong> — แจ้ง order ใหม่, error, audit log</li>
+        <li><strong>Telegram</strong> — แจ้งสถานะ order</li>
+        <li><strong>In-app toast</strong> — notification ระดับ success/error/info/warning</li>
+      </ul>
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem value="admin">
+    <AccordionTrigger>Admin Portal</AccordionTrigger>
+    <AccordionContent className="flex flex-col gap-4 text-balance">
+      <ul className="list-disc space-y-2 pl-4">
+        <li><strong>Dashboard</strong> — สถิติ realtime, charts, recent orders, export</li>
+        <li><strong>Product & inventory</strong> — CRUD สินค้า, variant, stock allocation, digital/physical type</li>
+        <li><strong>Order management</strong> — จัดการ order lifecycle ครบ, refund รายชิ้นได้</li>
+        <li><strong>Blog editor</strong> — TipTap rich text, slug, publish/draft</li>
+        <li><strong>Settings</strong> — branding, theme, payment config, LINE bot, webhook, popup, FAQ, legal pages</li>
+        <li><strong>Analytics & export</strong> — CSV/Excel export, shop report</li>
+        <li><strong>Cloud storage</strong> — Cloudflare R2, image compression ก่อนอัปโหลด</li>
+        <li><strong>Audit log</strong> — บันทึกทุก action ของ admin</li>
+      </ul>
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem value="tech">
+    <AccordionTrigger>Tech Stack</AccordionTrigger>
+    <AccordionContent className="flex flex-col gap-4 text-balance">
+      <ul className="list-disc space-y-2 pl-4">
+        <li><strong>Next.js 16 + React 19</strong> — App Router, TypeScript 5</li>
+        <li><strong>Prisma 6 + PostgreSQL</strong> — type-safe ORM</li>
+        <li><strong>TailwindCSS 3 + Radix UI</strong> — component library (@p5shop/ui)</li>
+        <li><strong>Zustand + React Hook Form</strong> — state management + forms</li>
+        <li><strong>Framer Motion</strong> — animations & transitions</li>
+        <li><strong>Cloudflare Turnstile</strong> — bot protection</li>
+        <li><strong>Docker + Vercel</strong> — deployment ready ทั้งคู่</li>
+        <li><strong>Monorepo</strong> — แยก packages: db, auth, ui, utils</li>
       </ul>
     </AccordionContent>
   </AccordionItem>
