@@ -1,12 +1,7 @@
-import { FeaturesSectionWithHoverEffects } from "@/components/home/features";
-import { Testimonials } from "@/components/home/testimonials";
 import { Footer } from "@/components/home/footer";
-import { UsedBySection } from "@/components/home/usedby";
 import * as motion from "motion/react-client";
-import OpenSource from "@/components/home/github";
-import { config } from "@/app.config";
-import { UpdatesSection } from "@/components/home/updates";
-import { DocsGrid } from "@/components/home/docs-grid";
+import { UpdatesSectionServer } from "@/components/home/updates-server";
+import { DocsGridServer } from "@/components/home/docs-grid-server";
 import { CTASection } from "@/components/home/cta-section";
 
 const AnimatedSection = ({
@@ -29,26 +24,19 @@ const AnimatedSection = ({
 export default function HomeSections() {
   return (
     <>
-      {/* <AnimatedSection>
-        <FeaturesSectionWithHoverEffects />
+      <AnimatedSection>
+        <UpdatesSectionServer />
+      </AnimatedSection>
+
+      <AnimatedSection delay={0.1}>
+        <DocsGridServer />
       </AnimatedSection>
 
       <AnimatedSection delay={0.2}>
-        <Testimonials />
-      </AnimatedSection>
-
-      <AnimatedSection delay={0.3}>
-        <UsedBySection />
+        <CTASection />
       </AnimatedSection>
 
       <AnimatedSection delay={0.4}>
-        <OpenSource repository={config.repository} />
-      </AnimatedSection> */}
-          <UpdatesSection />
-      <DocsGrid />
-      <CTASection />
-
-      <AnimatedSection delay={0.5}>
         <Footer />
       </AnimatedSection>
     </>

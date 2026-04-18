@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import CustomSearchDialog from "@/components/ui/search-dialog";
 import { AiChatProvider } from "@/components/ui/ai-chat-provider";
 import AiChatFab from "@/components/ui/ai-chat";
+import { ThemeTransitionProvider } from "@/components/theme-transition-provider";
 import "./global.css";
 
 const ibmPlexSansThai = IBM_Plex_Sans_Thai({
@@ -31,6 +32,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <html lang="en" suppressHydrationWarning style={{ fontFamily: 'var(--font-ibm-plex-sans-thai), sans-serif' }}>
       <body className={`${ibmPlexSansThai.variable} flex flex-col min-h-screen`}>
         <RootProvider theme={{ defaultTheme: "dark" }} search={{ SearchDialog: CustomSearchDialog }}>
+          <ThemeTransitionProvider />
           <AiChatProvider>
             {children}
           </AiChatProvider>

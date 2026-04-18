@@ -37,7 +37,7 @@ export function CTASection() {
     }
 
     return (
-        <section className="w-full max-w-4xl mx-auto px-6 py-16">
+        <section className="w-full max-w-7xl mx-auto px-6 py-16">
             <motion.div
                 ref={ref}
                 onMouseMove={handleMouseMove}
