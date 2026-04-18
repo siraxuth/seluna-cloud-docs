@@ -126,7 +126,7 @@ export default function Navbar() {
 
                 <div className="flex items-center gap-1">
                     <Button
-                        variant="ghost"
+                        variant="outline"
                         size="icon"
                         onClick={() => setOpenSearch(true)}
                         aria-label="Search"
@@ -165,7 +165,7 @@ export default function Navbar() {
                     {/* Mobile hamburger */}
                     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
                         <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
+                            <Button variant="outline" size="icon" className="md:hidden" aria-label="Open menu">
                                 <Menu className="!w-5 !h-5" />
                             </Button>
                         </SheetTrigger>
